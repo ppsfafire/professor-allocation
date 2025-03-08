@@ -27,4 +27,6 @@ public class Professor {
 	@ManyToOne(optional = false)
 	private Department department;
 
+	@ManyToOne (optional = false)
+	private Department department;
 }

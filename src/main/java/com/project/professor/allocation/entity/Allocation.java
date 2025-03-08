@@ -33,9 +33,11 @@ public class Allocation {
 	@Column(name = "endHour", nullable = false)
 	private Time endHour;
 	
-	
-	@ManyToOne(optional = false)
+	@ManyToOne (optional = false)
 	private Professor professor;
+	
+	@ManyToOne (optional = false)
+	private Course course;
 	
 	@ManyToOne(optional = false)
 	private Course course;
