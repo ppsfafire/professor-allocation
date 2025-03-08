@@ -1,11 +1,16 @@
 package com.project.professor.allocation.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-@Getter
-@Setter
+@Entity
+@Data
+@AllArgsConstructor
 public class Professor {
+	
+	@Id
 	private Long id;
 	private String name;
 	private String cpf;
