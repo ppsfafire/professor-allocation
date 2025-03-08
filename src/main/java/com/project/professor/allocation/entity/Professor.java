@@ -10,7 +10,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Professor {
 	
-	@Id
+	@Id 
 	private Long id;
 	private String name;
 	private String cpf;

@@ -13,5 +13,5 @@ public class Department {
 	@Id
 	private long Id;
 	private String name;
-	
+
 }
