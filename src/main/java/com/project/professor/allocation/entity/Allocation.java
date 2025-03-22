@@ -13,10 +13,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@AllArgsConstructor
+//@Data
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class Allocation {
 
 	@Id
@@ -32,26 +34,58 @@ public class Allocation {
 
 	@Column(name = "endHour", nullable = false)
 	private Time endHour;
-<<<<<<< HEAD
-	
-	@ManyToOne (optional = false)
-	private Professor professor;
-	
-	@ManyToOne (optional = false)
-	private Course course;
-	
-=======
 
-	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "professor_id", nullable = false)
 	private Professor professor;
 
-	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
->>>>>>> origin/main
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "course_id", nullable = false)
 	private Course course;
-	
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public DayOfWeek getDayOfWeek() {
+		return dayOfWeek;
+	}
+
+	public void setDayOfWeek(DayOfWeek dayOfWeek) {
+		this.dayOfWeek = dayOfWeek;
+	}
+
+	public Time getStartHour() {
+		return startHour;
+	}
+
+	public void setStartHour(Time startHour) {
+		this.startHour = startHour;
+	}
+
+	public Time getEndHour() {
+		return endHour;
+	}
+
+	public void setEndHour(Time endHour) {
+		this.endHour = endHour;
+	}
+
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
+	}
 }

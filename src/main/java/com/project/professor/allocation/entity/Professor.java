@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +29,4 @@ public class Professor {
 	@JoinColumn(name = "department_id", nullable = false)
 	private Department department;
 
-	@ManyToOne (optional = false)
-	private Department department;
 }
