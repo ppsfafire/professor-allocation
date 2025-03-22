@@ -13,6 +13,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -40,10 +41,24 @@ public class Allocation {
 	@Schema (example = "19:00:00", type = "string")
 	@Column(name = "endHour", nullable = false)
 	private Time endHour;
-
+	
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)	
 	@ManyToOne(optional = false)
+	@JoinColumn(name = "professor_id", nullable = false)
 	private Professor professor;
-
+	
+	@JsonProperty(access = JsonProperty.Access.READ_ONLY)	
 	@ManyToOne(optional = false)
+	@JoinColumn(name = "course_id", nullable = false)
 	private Course course;
+	
+	public void setCourseId(Long courseId) {
+		this.course = new Course();
+		this.course.setId(courseId);
+	}
+	
+	public void setProfessorId(Long professorId) {
+		this.professor = new Professor();
+		this.professor.setId(professorId);
+	}
 }

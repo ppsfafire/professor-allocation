@@ -11,10 +11,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Professor {
 
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
@@ -31,5 +33,9 @@ public class Professor {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "department_id", nullable = false)
 	private Department department;
-
+	
+	public void setDepartmentId(Long departmentId) {
+		this.department = new Department();
+		this.department.setId(departmentId);
+	}
 }

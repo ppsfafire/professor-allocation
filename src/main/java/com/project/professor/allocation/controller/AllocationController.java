@@ -20,6 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.professor.allocation.entity.Allocation;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
 @RestController
 @RequestMapping (path = "/allocations")
 public class AllocationController {
@@ -44,6 +49,13 @@ public class AllocationController {
 		allocation.setId(100L);
 		return new ResponseEntity<>(allocation, HttpStatus.CREATED);
 	}
+	
+	@Operation(summary = "Update a professor")
+    @ApiResponses({
+    	@ApiResponse(responseCode = "200", description = "OK"),
+    	@ApiResponse(responseCode = "400", description = "Bad Request", content = @Content),
+    	@ApiResponse(responseCode = "404", description = "Not Found", content = @Content)
+    })
 	
 	@PutMapping (path = "/{allocation_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Allocation> update(@PathVariable(name = "allocation_id") Long id, @RequestBody Allocation allocation) {
