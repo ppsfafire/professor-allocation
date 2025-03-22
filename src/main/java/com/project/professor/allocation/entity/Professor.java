@@ -13,18 +13,19 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Professor {
-	
-	@Id 
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "name", nullable = false)
 	private String name;
-	
-	@Column(name = "cpf", nullable = false, unique = true, length = 11)
+
+	@Column(name = "cpf", unique = true, nullable = false, length = 11)
 	private String cpf;
-	
+
 	@ManyToOne(optional = false)
+	@JoinColumn(name = "department_id", nullable = false)
 	private Department department;
 
 	@ManyToOne (optional = false)
