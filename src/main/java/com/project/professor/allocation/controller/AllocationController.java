@@ -1,9 +1,5 @@
 package com.project.professor.allocation.controller;
 
-import java.sql.Time;
-import java.time.DayOfWeek;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -19,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.professor.allocation.entity.Allocation;
+import com.project.professor.allocation.repository.AllocationRepository;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -29,19 +26,28 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @RequestMapping (path = "/allocations")
 public class AllocationController {
 	
+	private final AllocationRepository repository;
+	
+	public AllocationController(AllocationRepository repository) {
+		this.repository = repository;
+	}
+	
+	
 	@GetMapping (produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<Allocation>> findAll(){
-		List<Allocation> allocations = new ArrayList<>();
-		
-		Allocation alloc = new Allocation();
-		alloc.setDayOfWeek(DayOfWeek.SATURDAY);
-		alloc.setStartHour((Time.valueOf(LocalTime.of(8, 00))));
-		alloc.setEndHour((Time.valueOf(LocalTime.of(17, 00))));
-		
-		allocations.add(alloc);
-		
+		List<Allocation> allocations = repository.findAll();
 		return new ResponseEntity<>(allocations, HttpStatus.OK);
+	}
+	
+	@GetMapping (path = "/{allocation_id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Allocation> findById(@PathVariable(name = "allocation_id") Long id){
+		Allocation allocation = repository.findById(id).orElse(null);
 		
+		if (allocation == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(allocation, HttpStatus.OK);
+		}
 	}
 	
 	@PostMapping (consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
