@@ -51,7 +51,7 @@ public class AllocationController {
 		
 	}
 	
-	@DeleteMapping(path = "/{allocation_id}")
+	@DeleteMapping
 	public ResponseEntity<Void> deleteAll() {
 		
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
