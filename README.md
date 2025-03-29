@@ -5,16 +5,16 @@ O **Agenda do Professor** é uma API desenvolvida para gerenciar horários de au
 ## 🚀 Tecnologias Utilizadas
 
 ### Backend:
-- ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white) **Java**
-- ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring&logoColor=white) **Spring Boot**
+- ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white) 
+- ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring&logoColor=white) 
 
 ### Banco de Dados:
-- ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) **MySQL**
-- ![JPA](https://img.shields.io/badge/JPA-0078D7?style=for-the-badge&logo=hibernate&logoColor=white) **JPA (Mapeamento Objeto-Relacional)**
+- ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) 
+- ![JPA](https://img.shields.io/badge/JPA-0078D7?style=for-the-badge&logo=hibernate&logoColor=white) 
 
 ### Testes e Documentação:
-- ![JUnit](https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white) **JUnit (Testes Unitários)**
-- ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black) **Swagger (Documentação da API REST)**
+- ![JUnit](https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white) 
+- ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black) 
 
 ## 📌 Funcionalidades
 - Cadastro de professores e horários de aulas
@@ -29,7 +29,7 @@ O **Agenda do Professor** é uma API desenvolvida para gerenciar horários de au
    ```
 2. **Acesse o diretório:**
    ```sh
-   cd agenda-do-professor
+   cd professor-allocation-coffe
    ```
 3. **Configure o banco de dados:**
    - Defina as credenciais do MySQL no `application.properties`
