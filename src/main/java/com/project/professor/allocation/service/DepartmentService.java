@@ -1,5 +1,7 @@
 package com.project.professor.allocation.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.project.professor.allocation.entity.Department;
@@ -47,6 +49,14 @@ private final DepartmentRepository repository;
 	public void deleteAll() {
 		repository.deleteAllInBatch();
 		
+	}
+
+	public List<Department> findAll(String name) {
+		if(name == null) {
+			return repository.findAll();
+		} else {
+			return repository.findByNameContainingIgnoreCase(name);
+		}
 	}
 	
 }
