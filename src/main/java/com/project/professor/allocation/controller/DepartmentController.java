@@ -15,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.project.professor.allocation.entity.Department;
 import com.project.professor.allocation.repository.DepartmentRepository;
+import com.project.professor.allocation.service.DepartmentService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -27,11 +28,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RequestMapping(path = "/departments")
 public class DepartmentController {
 
-    private final DepartmentRepository repository;
+    private final DepartmentService service;
 
-    public DepartmentController(DepartmentRepository repository) {
+    public DepartmentController(DepartmentService service) {
         super();
-        this.repository = repository;
+        this.service = service;
     }
 
     @Operation(summary = "Find a department")
@@ -42,7 +43,7 @@ public class DepartmentController {
     })
     @GetMapping(path = "/{department_id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Department> findById(@PathVariable(name = "department_id") Long id) {
-        Department department = repository.findById(id).orElse(null);
+        Department department = service.findById(id);
         if (department == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
@@ -58,7 +59,7 @@ public class DepartmentController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Department> save(@RequestBody Department department) {
         try {
-            department = repository.save(department);
+            department = service.save(department);
             return new ResponseEntity<>(department, HttpStatus.CREATED);
         } catch (Exception e) {
         	throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage(), e);
@@ -76,7 +77,7 @@ public class DepartmentController {
                                              @RequestBody Department department) {
         department.setId(id);
         try {
-            department = repository.save(department);
+            department = service.update(department);
             if (department == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             } else {
@@ -94,7 +95,7 @@ public class DepartmentController {
     })
     @DeleteMapping(path = "/{department_id}")
     public ResponseEntity<Void> deleteById(@PathVariable(name = "department_id") Long id) {
-        repository.deleteById(id);
+    	service.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
@@ -104,7 +105,7 @@ public class DepartmentController {
     })
     @DeleteMapping
     public ResponseEntity<Void> deleteAll() {
-        repository.deleteAll();
+    	service.deleteAll();
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
