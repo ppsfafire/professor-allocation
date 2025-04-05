@@ -79,7 +79,7 @@ public class ProfessorController {
                                             @RequestBody Professor professor) {
         professor.setId(id);
         try {
-            professor = repository.save(professor);
+            professor = service.update(professor);
             if (professor == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             } else {

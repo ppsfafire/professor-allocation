@@ -38,6 +38,20 @@ private final DepartmentService departmentService;
 	public Professor save(Professor professor) {
 		professor.setId(null);
 		
+		return saveInternal(professor);
+	}
+
+	public Professor update(Professor professor) {
+		if (repository.existsById(professor.getId())) {
+			
+			return saveInternal(professor);
+			
+		}else {
+			return null;
+		}
+	}
+	
+	private Professor saveInternal(Professor professor) {
 		professor = repository.save(professor);
 		
 		Department department = departmentService.findById(professor.getDepartment().getId());
@@ -46,4 +60,5 @@ private final DepartmentService departmentService;
 		
 		return professor;
 	}
+	
 }
