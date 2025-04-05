@@ -39,7 +39,7 @@ private final DepartmentService departmentService;
 	}
 
 	public void deleteAll() {
-		repository.deleteAllByIdInBatch(null);
+		repository.deleteAllInBatch();
 		
 	}
 
