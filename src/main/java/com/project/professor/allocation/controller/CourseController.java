@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.project.professor.allocation.entity.Course;
-import com.project.professor.allocation.repository.CourseRepository;
+import com.project.professor.allocation.service.CourseService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -27,11 +27,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RequestMapping(path = "/courses")
 public class CourseController {
 
-    private final CourseRepository repository;
+    private final CourseService service;
 
-    public CourseController(CourseRepository repository) {
+    public CourseController(CourseService service) {
         super();
-        this.repository = repository;
+        this.service = service;
     }
 
     @Operation(summary = "Find a course")
@@ -42,7 +42,7 @@ public class CourseController {
     })
     @GetMapping(path = "/{course_id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Course> findById(@PathVariable(name = "course_id") Long id) {
-        Course course = repository.findById(id).orElse(null);
+        Course course = service.findById(id);
         if (course == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
@@ -58,7 +58,7 @@ public class CourseController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Course> save(@RequestBody Course course) {
         try {
-            course = repository.save(course);
+            course = service.save(course);
             return new ResponseEntity<>(course, HttpStatus.CREATED);
         } catch (Exception e) {
         	throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage(), e);
@@ -76,7 +76,7 @@ public class CourseController {
                                          @RequestBody Course course) {
         course.setId(id);
         try {
-            course = repository.save(course);
+            course = service.update(course);
             if (course == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             } else {
@@ -94,7 +94,7 @@ public class CourseController {
     })
     @DeleteMapping(path = "/{course_id}")
     public ResponseEntity<Void> deleteById(@PathVariable(name = "course_id") Long id) {
-        repository.deleteById(id);
+    	service.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
@@ -104,7 +104,7 @@ public class CourseController {
     })
     @DeleteMapping
     public ResponseEntity<Void> deleteAll() {
-        repository.deleteAll();
+    	service.deleteAll();
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
