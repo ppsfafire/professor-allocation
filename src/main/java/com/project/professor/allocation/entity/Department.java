@@ -11,11 +11,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Department {
 
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
@@ -25,5 +24,4 @@ public class Department {
 
 	@Column(name = "name", unique = true, nullable = false)
 	private String name;
-
 }

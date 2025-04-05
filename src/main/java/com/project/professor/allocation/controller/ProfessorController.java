@@ -15,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.project.professor.allocation.entity.Professor;
 import com.project.professor.allocation.repository.ProfessorRepository;
+import com.project.professor.allocation.service.ProfessorService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -44,7 +45,7 @@ public class ProfessorController {
     })
     @GetMapping(path = "/{professor_id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Professor> findById(@PathVariable(name = "professor_id") Long id) {
-        Professor professor = repository.findById(id).orElse(null);
+        Professor professor = service.findById(id);
         if (professor == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
@@ -60,7 +61,7 @@ public class ProfessorController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Professor> save(@RequestBody Professor professor) {
         try {
-            professor = repository.save(professor);
+            professor = service.save(professor);
             return new ResponseEntity<>(professor, HttpStatus.CREATED);
         } catch (Exception e) {
         	throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage(), e);
@@ -96,7 +97,7 @@ public class ProfessorController {
     })
     @DeleteMapping(path = "/{professor_id}")
     public ResponseEntity<Void> deleteById(@PathVariable(name = "professor_id") Long id) {
-        repository.deleteById(id);
+        service.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
@@ -106,7 +107,7 @@ public class ProfessorController {
     })
     @DeleteMapping
     public ResponseEntity<Void> deleteAll() {
-        repository.deleteAll();
+    	service.deleteAll();
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
