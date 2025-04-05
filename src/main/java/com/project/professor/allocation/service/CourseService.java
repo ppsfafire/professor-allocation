@@ -43,7 +43,7 @@ private final CourseRepository repository;
 	}
 
 	public void deleteAll() {
-		repository.deleteAllByIdInBatch(null);
+		repository.deleteAllInBatch();
 		
 	}	
 }
