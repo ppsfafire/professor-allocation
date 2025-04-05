@@ -1,5 +1,7 @@
 package com.project.professor.allocation.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -10,11 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.project.professor.allocation.entity.Professor;
-import com.project.professor.allocation.repository.ProfessorRepository;
 import com.project.professor.allocation.service.ProfessorService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -28,14 +30,27 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @RequestMapping(path = "/professors")
 public class ProfessorController {
 
-    private final ProfessorRepository repository;
+
     private final ProfessorService service;
 
-    public ProfessorController(ProfessorRepository repository, ProfessorService service) {
+    public ProfessorController(ProfessorService service) {
         super();
-        this.repository = repository;
         this.service = service;
     }
+    
+    
+    @GetMapping(produces= MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Professor>> findAll(@RequestParam(name = "name", required = false)String name) {
+    	List<Professor> professor = service.findAll(name);
+    	return new ResponseEntity<>(professor, HttpStatus.OK);
+    }
+    
+    @GetMapping (path = "/department/{department_id}", produces= MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Professor>> findByDep(@PathVariable(name = "department_id") Long departmentId){
+    	List<Professor> professor = service.findByDepartment(departmentId);
+    	return new ResponseEntity<>(professor, HttpStatus.OK);
+    }
+    
 
     @Operation(summary = "Find a professor")
     @ApiResponses({
@@ -89,6 +104,7 @@ public class ProfessorController {
         	throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage(), e);
         }
     }
+ 
 
     @Operation(summary = "Delete a professor")
     @ApiResponses({

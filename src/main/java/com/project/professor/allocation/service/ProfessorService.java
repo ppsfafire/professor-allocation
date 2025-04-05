@@ -1,5 +1,7 @@
 package com.project.professor.allocation.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.project.professor.allocation.entity.Department;
@@ -20,6 +22,12 @@ private final DepartmentService departmentService;
 
 	public Professor findById(Long id) {
 		return repository.findById(id).orElse(null);
+	}
+	
+	public List<Professor> findByDepartment(Long departmentId){
+		Department dep = new Department();
+		dep.setId(departmentId);
+		return repository.findByDepartment(dep);
 	}
 
 	public void deleteById(Long id) {
@@ -59,6 +67,14 @@ private final DepartmentService departmentService;
 		professor.setDepartment(department);
 		
 		return professor;
+	}
+
+	public List<Professor> findAll(String name) {
+		if(name == null) {
+			return repository.findAll();
+		} else {
+			return repository.findByNameContainingIgnoreCase(name);
+		}
 	}
 	
 }
