@@ -12,5 +12,7 @@ RUN if [ -f ./mvnw ]; then ./mvnw clean package -DskipTests; else mvn clean pack
 
 RUN printenv
 
+EXPOSE 8080
+
 # Comando para rodar a aplicação
 CMD printenv && java -jar target/professor-allocation-0.0.1-SNAPSHOT.jar 
