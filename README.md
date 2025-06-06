@@ -92,5 +92,5 @@ professor-allocation/
 Pull requests são bem-vindos! Para grandes mudanças, abra uma issue primeiro para discutir o que você gostaria de modificar.
 
 ---
-Desenvolvido por [ppsfafire](https://github.com/ppsfafire)
+Desenvolvido por [ppsfafire](https://github.com/ppsfafire) e [isisxavier](https://github.com/isisxavier)
 
