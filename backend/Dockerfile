@@ -14,5 +14,3 @@ RUN printenv
 
 # Comando para rodar a aplicação
 CMD printenv && java -jar target/professor-allocation-0.0.1-SNAPSHOT.jar 
-
-echo "# trigger redeploy" >> backend/Dockerfile 
