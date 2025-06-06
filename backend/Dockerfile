@@ -10,5 +10,9 @@ COPY . .
 # Tente usar o Maven Wrapper, se existir, senão use o Maven do container
 RUN if [ -f ./mvnw ]; then ./mvnw clean package -DskipTests; else mvn clean package -DskipTests; fi
 
+RUN printenv
+
 # Comando para rodar a aplicação
-CMD ["java", "-jar", "target/professor-allocation-0.0.1-SNAPSHOT.jar"] 
+CMD printenv && java -jar target/professor-allocation-0.0.1-SNAPSHOT.jar 
+
+echo "# trigger redeploy" >> backend/Dockerfile 
