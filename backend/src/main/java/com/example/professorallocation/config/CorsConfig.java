@@ -11,8 +11,9 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
+                System.out.println("CORS CONFIGURADO!");
                 registry.addMapping("/**")
-                    .allowedOrigins("*")
+                    .allowedOrigins("https://professor-allocation.vercel.app")
                     .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                     .allowedHeaders("*");
             }
