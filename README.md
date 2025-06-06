@@ -1,46 +1,72 @@
-# 📘 Agenda do Professor
+# Professor Allocation
 
-O **Agenda do Professor** é uma API desenvolvida para gerenciar horários de aulas e turmas. Utiliza tecnologias modernas para garantir eficiência, escalabilidade e facilidade de manutenção.
+Sistema de alocação de professores desenvolvido com React (Vite + TypeScript + Chakra UI) no frontend e Spring Boot no backend.
 
-## 🚀 Tecnologias Utilizadas
+## Funcionalidades
+- Cadastro, listagem e remoção de Professores, Cursos e Departamentos
+- Associação de professores a departamentos
+- Validação para impedir remoção de departamentos com professores vinculados
+- Interface moderna e responsiva
 
-### Backend:
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)  ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring&logoColor=white) 
+## Tecnologias Utilizadas
+- **Frontend:** React, Vite, TypeScript, Chakra UI, Axios, React Router
+- **Backend:** Spring Boot, Spring Data JPA, H2 Database
 
-### Banco de Dados:
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)  ![JPA](https://img.shields.io/badge/JPA-0078D7?style=for-the-badge&logo=hibernate&logoColor=white) 
+## Como executar o projeto
 
-### Testes e Documentação:
-![JUnit](https://img.shields.io/badge/JUnit-25A162?style=for-the-badge&logo=junit5&logoColor=white)  ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black) 
+### Pré-requisitos
+- Node.js (v18+ recomendado)
+- npm
+- Java 17+
+- Maven
 
-## 📌 Funcionalidades
-- Cadastro de professores e horários de aulas
-- Gerenciamento de turmas
-- Consulta de horários disponíveis
-- API documentada para fácil integração
+### 1. Clone o repositório
+```bash
+git clone https://github.com/ppsfafire/professor-allocation.git
+cd professor-allocation
+```
 
-## 📦 Como Executar o Projeto
-1. **Clone o repositório:**
-   ```sh
-   git clone https://github.com/CTorressjr/professor-allocation-coffe.git
-   ```
-2. **Acesse o diretório:**
-   ```sh
-   cd professor-allocation-coffe
-   ```
-3. **Configure o banco de dados:**
-   - Defina as credenciais do MySQL no `application.properties`
-4. **Execute a aplicação:**
-   ```sh
-   mvn spring-boot:run
-   ```
-5. **Acesse a documentação da API:**
-   - O Swagger estará disponível em: `http://localhost:8080/swagger-ui.html`
+### 2. Inicie o backend
+```bash
+cd backend
+mvn spring-boot:run
+```
+O backend estará disponível em `http://localhost:8080`.
 
-## 📄 Licença
-Este projeto está sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
+### 3. Inicie o frontend
+Abra outro terminal e execute:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+O frontend estará disponível em `http://localhost:5173`.
+
+### 4. Acesse o sistema
+- Frontend: [http://localhost:5173](http://localhost:5173)
+- Backend: [http://localhost:8080](http://localhost:8080)
+- Console H2: [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
+  - JDBC URL: `jdbc:h2:mem:professordb`
+  - Username: `sa`
+  - Password: (deixe em branco)
+
+## Observações
+- Não é possível cadastrar professor sem departamento.
+- Não é possível remover departamento com professores vinculados (mensagem amigável exibida).
+- O banco de dados é em memória (H2), reinicia a cada start do backend.
+
+## Estrutura do Projeto
+```
+professor-allocation/
+├── backend/
+│   └── ... (código Spring Boot)
+└── frontend/
+    └── ... (código React)
+```
+
+## Contribuição
+Pull requests são bem-vindos! Para grandes mudanças, abra uma issue primeiro para discutir o que você gostaria de modificar.
 
 ---
-
-💡 *Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.* 😊
+Desenvolvido por [ppsfafire](https://github.com/ppsfafire)
 
