@@ -131,7 +131,7 @@ const Professors = () => {
   }
 
   return (
-    <Container maxW="1200px" py={8}>
+    <Container maxW="1200px" py={8} bg="white">
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={4}>
         <Heading size="lg">Professores</Heading>
         <Button colorScheme="blue" onClick={onOpen} isDisabled={departments.length === 0}>
