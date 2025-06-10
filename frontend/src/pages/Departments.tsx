@@ -21,9 +21,9 @@ import {
   Input,
   VStack,
   useToast,
-  Container,
 } from '@chakra-ui/react'
 import api from '../services/api'
+import CustomContainer from '../components/CustomContainer'
 
 interface Department {
   id: number
@@ -103,7 +103,7 @@ const Departments = () => {
   }
 
   return (
-    <Container maxW="1200px" px={4} py={8} bg="white">
+    <CustomContainer py={8} bg="white">
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={4}>
         <Heading size="lg">Departamentos</Heading>
         <Button colorScheme="blue" onClick={onOpen}>
@@ -172,7 +172,7 @@ const Departments = () => {
           </ModalBody>
         </ModalContent>
       </Modal>
-    </Container>
+    </CustomContainer>
   )
 }
 

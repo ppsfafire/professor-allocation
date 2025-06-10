@@ -1,9 +1,10 @@
 import { Box, Heading, Text, Container, SimpleGrid, Icon, VStack } from '@chakra-ui/react'
 import { FaUserGraduate, FaBook, FaBuilding } from 'react-icons/fa'
+import CustomContainer from '../components/CustomContainer'
 
 const Home = () => {
   return (
-    <Container maxW="1200px" px={4} py={8} bg="white">
+    <CustomContainer py={8} bg="white">
       <VStack spacing={8} align="stretch">
         <Box textAlign="center">
           <Heading as="h1" size="2xl" mb={4}>
@@ -46,7 +47,7 @@ const Home = () => {
           </Box>
         </SimpleGrid>
       </VStack>
-    </Container>
+    </CustomContainer>
   )
 }
 
