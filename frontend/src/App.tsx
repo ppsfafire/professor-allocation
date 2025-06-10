@@ -8,7 +8,7 @@ import Departments from './pages/Departments'
 
 function App() {
   return (
-    <Box minH="100vh" w="full" display="flex" flexDirection="column" alignItems="center">
+    <Box minH="100vh" w="full">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
