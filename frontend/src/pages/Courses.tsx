@@ -102,7 +102,7 @@ const Courses = () => {
   }
 
   return (
-    <Container maxW="1200px" py={8} bg="white">
+    <Container maxW="1200px" w="full" py={8} bg="white">
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={4}>
         <Heading size="lg">Cursos</Heading>
         <Button colorScheme="blue" onClick={onOpen}>
