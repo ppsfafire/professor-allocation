@@ -21,6 +21,7 @@ import {
   Input,
   VStack,
   useToast,
+  Container,
 } from '@chakra-ui/react'
 import api from '../services/api'
 
@@ -101,7 +102,7 @@ const Courses = () => {
   }
 
   return (
-    <Box p={4}>
+    <Container maxW="1200px" py={8}>
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={4}>
         <Heading size="lg">Cursos</Heading>
         <Button colorScheme="blue" onClick={onOpen}>
@@ -170,7 +171,7 @@ const Courses = () => {
           </ModalBody>
         </ModalContent>
       </Modal>
-    </Box>
+    </Container>
   )
 }
 

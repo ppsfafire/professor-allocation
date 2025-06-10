@@ -22,6 +22,7 @@ import {
   VStack,
   useToast,
   Select,
+  Container,
 } from '@chakra-ui/react'
 import api from '../services/api'
 
@@ -130,7 +131,7 @@ const Professors = () => {
   }
 
   return (
-    <Box p={4}>
+    <Container maxW="1200px" py={8}>
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={4}>
         <Heading size="lg">Professores</Heading>
         <Button colorScheme="blue" onClick={onOpen} isDisabled={departments.length === 0}>
@@ -223,7 +224,7 @@ const Professors = () => {
           </ModalBody>
         </ModalContent>
       </Modal>
-    </Box>
+    </Container>
   )
 }
 
