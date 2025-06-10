@@ -3,7 +3,7 @@ import { FaUserGraduate, FaBook, FaBuilding } from 'react-icons/fa'
 
 const Home = () => {
   return (
-    <Container maxW="1200px" w="full" py={8} bg="white">
+    <Container maxW="1200px" py={8} bg="white">
       <VStack spacing={8} align="stretch">
         <Box textAlign="center">
           <Heading as="h1" size="2xl" mb={4}>
