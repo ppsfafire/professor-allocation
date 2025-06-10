@@ -10,14 +10,12 @@ function App() {
   return (
     <Box minH="100vh">
       <Navbar />
-      <Box p={4}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/professors" element={<Professors />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/departments" element={<Departments />} />
-        </Routes>
-      </Box>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/professors" element={<Professors />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/departments" element={<Departments />} />
+      </Routes>
     </Box>
   )
 }
