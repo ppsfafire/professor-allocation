@@ -111,7 +111,7 @@ const Departments = () => {
         </Button>
       </Box>
 
-      <Table variant="simple">
+      <Table variant="simple" w="full">
         <Thead>
           <Tr>
             <Th>Nome</Th>
